@@ -1,13 +1,16 @@
 # Chracter-Map-Generation-using Machine Learning Techniques
 
 **Overview**
+
 Psychological bias is the tendency to make decisions or take action in an unknowingly irrational way. Naturally, a human will be biased towards a particular option while taking a decision based on the interest. Through this project, implementation of a system that maps these biases are done. It is an approach to build the core part of an AGI(Artificial General Intelligence) system. 
  
 As an initial phase of the whole project, we are implementing a program which generates a radar graph based on a person’s interest. The initial dataset is collected from the Instagram ad-data. The ad-data consists of labels from various fields that are generated based on the activity. These labels are processed using Word2Vec and a hierarchical clustering algorithm. The output generated is be a dendrogram. It is then converted into a simple understandable radar graph collection that is interlinked.** 
 
 
 **Methodology**
+
 The main steps that include are: 
+
 • Fetches Instagram ads information.
 • Instagram’s each ad interest data is considered as a label. Top 5 URL regarding that label is extracted. 
 • Cleaning is performed on the data of that URLs and is tokenized. 
@@ -28,6 +31,7 @@ Since the website is a dynamic one, scrolling is required to get all data. The c
 The “Ads interest” data contains labels that have a collective meaning but when they are treated separately most of them appear to be quite unrelated. To indicate a bias towards a specific area of interest, they need to be classified. For that relation between each of the input labels have to be calculated.   
 
 **Incremental training**
+
 Since the labels stored are not recognizable by the computer, the conversion is needed for further processing. Using Natural Language Processing (NLP) corresponding vector information can be generated. Specifically, word embedding techniques are used for this. Models like Word2Vec (gensim) and Spacey are initially tested for this, these are fast models but the main disadvantage was the lack of ability to train the dataset incrementally.  
  
 Incremental training adds labels and corresponding vectors to the trained output whenever a new label occurs. Because of the presence of multiple users, incremental training is an important feature here. The same corpus can grow bigger incrementally. Facebook’s FastText is a word embedding system that supports incremental training and has similar features of Word2Vec. Hence it is used.
@@ -43,6 +47,7 @@ Returned links are accessed using the “urllib” library which is commonly use
 The output of the preprocessing stage is a collection of tokens that are separated from the scraped sentences. Then it is fed to the fasttext model. But before that it needs to be trained with a vectorized dataset, it can be downloaded from the fasttext documentation page(many general datasets are available on the internet). It helps the system to gain much more accuracy. After all labels are trained, the trained output will have a large collection of labels which includes the user’s Ads data as well as the tokens from all the pages that are used to accurately vectorize these input labels. 
  
 **Processing**
+
 As per each of the users, vectors of required labels have to be taken from the trained vectorized data. It can be taken by comparing the input data file and the dictionary of the trained data. Then these vectors associated with the labels are copied into a new file with the same name as the user. This information is fed into a hierarchical clustering algorithm that plots a dendrogram corresponding to it.  
  
 Clustering is done by using sklearn’s “AgglomerativeClustering” method and plotting of dendrogram can be done by using Scipy’s dendrogram and linkage methods. 
