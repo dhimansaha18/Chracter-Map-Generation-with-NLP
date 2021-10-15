@@ -1,4 +1,4 @@
-# Chracter-Map-Generation-using Machine Learning Techniques
+# Character-Map-Generation-using Machine Learning Techniques
 
 **Overview**
 
